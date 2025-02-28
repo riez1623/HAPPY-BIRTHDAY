@@ -3,105 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Surprise Birthday Celebration! 🎉</title>
+    <title>Happy Birthday Joaquin!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0e68c;
-            color: #4a4a4a;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffeb3b;
             text-align: center;
-            padding: 50px;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        /* Envelope style */
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background-color: red;
             position: relative;
+            margin: 0 auto;
+            border-radius: 10px;
             overflow: hidden;
+            transform-origin: bottom;
+            cursor: pointer;
         }
-        h1 {
-            font-size: 3em;
-            color: #ff4d4d;
-            margin-top: 20px;
+
+        /* Envelope flap */
+        .flap {
+            width: 100%;
+            height: 50%;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 1s ease-in-out;
+            transform-origin: top;
         }
-        h2 {
-            font-size: 2em;
-            color: #ff8c1a;
+
+        /* Circle button in the center of the envelope */
+        .button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: #ff4081;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
         }
-        p {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-        }
-        .gif {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .btn {
-            background-color: #ff5733;
+
+        .button:before {
+            content: 'Click';
             color: white;
-            padding: 15px 30px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        /* Letter */
+        .letter {
+            width: 250px;
+            height: 150px;
+            background-color: white;
+            margin: 30px auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        /* Button at the bottom of the letter */
+        .happy-button {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.2em;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
+            font-size: 16px;
         }
-        .btn:hover {
-            background-color: #c70000;
+
+        .happy-button:hover {
+            background-color: #f50057;
         }
-        @keyframes confetti-fall {
-            0% { opacity: 1; transform: translateY(-100vh); }
-            100% { opacity: 0; transform: translateY(100vh); }
-        }
+
+        /* Confetti */
         .confetti {
-            position: absolute;
-            top: -10%;
-            width: 5px;
+            width: 10px;
             height: 10px;
-            background-color: rgba(255, 0, 0, 0.6);
-            animation: confetti-fall 3s linear infinite;
+            background-color: #ff4081;
+            position: absolute;
+            animation: confetti 3s infinite;
         }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(300px) rotate(360deg);
+            }
+        }
+
+        /* Balloons */
+        .balloon {
+            width: 100px;
+            height: 150px;
+            background-color: #ff4081;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -150px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .balloon:after {
+            content: '';
+            width: 10px;
+            height: 50px;
+            background-color: #ff4081;
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-500px);
+            }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>🎉 Happy Birthday, Joaquin! 🎉</h1>
-        <img src="https://media.giphy.com/media/3o6Zt1ixl0JVDP4jdS/giphy.gif" alt="Happy Birthday GIF" class="gif">
-        
-        <h2>It's Your Special Day!</h2>
-        <p>Today we celebrate not just your birth, but the amazing person you are! Thank you for being a part of our lives, for all the joy you bring, and for the laughter we share. You deserve all the happiness in the world!</p>
-        <p>Get ready for some surprises and a day filled with love and laughter. We hope this year brings you closer to your dreams and opens up new adventures.</p>
-        
-        <a href="javascript:void(0);" class="btn" onclick="alert('🎈 Surprise Party at [Time] on [Date]! 🎈\\n\\nJoin us at [Location]!');">Join the Surprise!</a>
-        
-        <footer style="margin-top: 30px;">
-            <p>With all our love,</p>
-            <p>Riez & Friends</p>
-        </footer>
+    <!-- Envelope -->
+    <div class="envelope" id="envelope">
+        <div class="flap" id="flap"></div>
+        <div class="button" id="openButton"></div>
     </div>
 
-    <!-- Confetti Animation -->
+    <!-- Letter -->
+    <div class="letter" id="letter">
+        <h2>Happy Birthday Joaquin!</h2>
+        <p>Wishing you an amazing year ahead, full of laughter, love, and success!</p>
+        <button class="happy-button" id="happyButton">Happy Birthday Joaquin!</button>
+    </div>
+
     <script>
-        const colors = ['#FFC700', '#FF5733', '#28A745', '#007BFF', '#6F42C1'];
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.left = Math.random() * 100 + 'vw';
-            document.body.appendChild(confetti);
-            setTimeout(() => {
-                confetti.remove();
-            }, 3000);
-        }
-        setInterval(createConfetti, 150);
+        // Envelope open animation
+        document.getElementById('openButton').addEventListener('click', function() {
+            document.getElementById('flap').style.transform = 'rotateX(-180deg)';
+            document.getElementById('letter').style.transform = 'translate(-50%, -50%) scale(1)';
+            document.getElementById('letter').style.opacity = '1';
+        });
+
+        // Happy Birthday Button Animation
+        document.getElementById('happyButton').addEventListener('click', function() {
+            // Generate confetti
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDelay = `${Math.random() * 3}s`;
+                document.body.appendChild(confetti);
+            }
+
+            // Generate balloons
+            for (let i = 0; i < 5; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                balloon.style.left = `${Math.random() * 100}%`;
+                document.body.appendChild(balloon);
+            }
+        });
     </script>
 
 </body>
