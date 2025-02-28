@@ -9,21 +9,24 @@
             font-family: 'Arial', sans-serif;
             background-color: #ffeb3b;
             text-align: center;
-            padding-top: 50px;
             margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Envelope style */
         .envelope {
-            width: 300px;
-            height: 200px;
+            width: 400px;
+            height: 300px;
             background-color: red;
             position: relative;
-            margin: 0 auto;
             border-radius: 10px;
             overflow: hidden;
-            transform-origin: bottom;
             cursor: pointer;
+            transform-origin: bottom;
+            transition: transform 1s ease-in-out;
         }
 
         /* Envelope flap */
@@ -62,10 +65,9 @@
 
         /* Letter */
         .letter {
-            width: 250px;
-            height: 150px;
+            width: 350px;
+            height: 180px;
             background-color: white;
-            margin: 30px auto;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -100,7 +102,6 @@
         .confetti {
             width: 10px;
             height: 10px;
-            background-color: #ff4081;
             position: absolute;
             animation: confetti 3s infinite;
         }
@@ -110,7 +111,7 @@
                 transform: translateY(-100px) rotate(0deg);
             }
             100% {
-                transform: translateY(300px) rotate(360deg);
+                transform: translateY(100vh) rotate(360deg);
             }
         }
 
@@ -176,6 +177,11 @@
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
+
+                // Add random colors for confetti
+                const colors = ['#ff4081', '#f50057', '#4caf50', '#2196f3'];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
                 confetti.style.left = `${Math.random() * 100}%`;
                 confetti.style.animationDelay = `${Math.random() * 3}s`;
                 document.body.appendChild(confetti);
