@@ -14,12 +14,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         /* Envelope style */
         .envelope {
-            width: 400px;
-            height: 300px;
+            width: 800px; /* Even bigger envelope */
+            height: 600px; /* Even bigger envelope */
             background-color: red;
             position: relative;
             border-radius: 10px;
@@ -47,8 +48,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
+            width: 120px; /* Even bigger button */
+            height: 120px; /* Even bigger button */
             background-color: #ff4081;
             border-radius: 50%;
             cursor: pointer;
@@ -60,13 +61,13 @@
             color: white;
             font-weight: bold;
             text-align: center;
-            line-height: 60px;
+            line-height: 120px;
         }
 
         /* Letter */
         .letter {
-            width: 350px;
-            height: 180px;
+            width: 650px; /* Even bigger letter */
+            height: 400px; /* Even bigger letter */
             background-color: white;
             position: absolute;
             top: 50%;
@@ -76,22 +77,22 @@
             transition: transform 1s ease-in-out, opacity 1s ease-in-out;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            padding: 20px;
+            padding: 40px;
         }
 
         /* Button at the bottom of the letter */
         .happy-button {
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 10px 20px;
+            padding: 15px 30px;
             background-color: #ff4081;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         .happy-button:hover {
@@ -100,15 +101,16 @@
 
         /* Confetti */
         .confetti {
-            width: 10px;
-            height: 10px;
+            width: 20px; /* Bigger confetti */
+            height: 20px; /* Bigger confetti */
             position: absolute;
             animation: confetti 3s infinite;
+            z-index: 1000;
         }
 
         @keyframes confetti {
             0% {
-                transform: translateY(-100px) rotate(0deg);
+                transform: translateY(-100vh) rotate(0deg);
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
@@ -117,22 +119,22 @@
 
         /* Balloons */
         .balloon {
-            width: 100px;
-            height: 150px;
+            width: 140px; /* Even bigger balloon */
+            height: 200px; /* Even bigger balloon */
             background-color: #ff4081;
             border-radius: 50%;
             position: absolute;
-            bottom: -150px;
-            animation: float 3s ease-in-out infinite;
+            bottom: -200px;
+            animation: float 5s ease-in-out infinite;
         }
 
         .balloon:after {
             content: '';
-            width: 10px;
-            height: 50px;
+            width: 14px; /* Bigger string */
+            height: 70px; /* Bigger string */
             background-color: #ff4081;
             position: absolute;
-            bottom: -50px;
+            bottom: -70px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -142,7 +144,7 @@
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(-500px);
+                transform: translateY(-100vh);
             }
         }
 
@@ -166,6 +168,10 @@
     <script>
         // Envelope open animation
         document.getElementById('openButton').addEventListener('click', function() {
+            // Hide the button after it's clicked
+            document.getElementById('openButton').style.display = 'none';
+
+            // Open the envelope flap and show the letter
             document.getElementById('flap').style.transform = 'rotateX(-180deg)';
             document.getElementById('letter').style.transform = 'translate(-50%, -50%) scale(1)';
             document.getElementById('letter').style.opacity = '1';
@@ -173,12 +179,12 @@
 
         // Happy Birthday Button Animation
         document.getElementById('happyButton').addEventListener('click', function() {
-            // Generate confetti
+            // Generate confetti with random colors
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
 
-                // Add random colors for confetti
+                // Random colors for confetti
                 const colors = ['#ff4081', '#f50057', '#4caf50', '#2196f3'];
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
